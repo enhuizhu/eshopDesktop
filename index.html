@@ -7,15 +7,44 @@
     <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
   </head>
   <body>
-    <h1>Hello World! flajj</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <div class="container">
+        <div class="row">
+            <input type="button" value="print file" class="btn btn-primary" onclick="printFile()"></input>
+        </div>
+    </div>
     
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
   
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        function printFile() {
+            const printer = require("node-printer");
+            let avilablePrinter = printer.list().pop();
+            let fs = require("fs");
+            let shopPrinter = null;
+
+            if (!avilablePrinter) {
+                alert("printer is not avilable!");
+            };
+
+            if (avilablePrinter) {
+                console.info("avilablePrinter", avilablePrinter);
+                shopPrinter = new printer(avilablePrinter);
+                let fileBuffer = fs.readFileSync("message.txt");
+                let jobFromBuffer = shopPrinter.printBuffer(fileBuffer);
+
+                jobFromBuffer.once("sent", function() {
+                    console.info("sent the job");
+                    jobFromBuffer.on("compeleted", function() {
+                        console.log("job" + jobFromBuffer.identifier + " has been printed!");
+                        jobFromBuffer.removeAllListeners();
+                    });
+                });
+            };
+        }
+    </script>
   </body>
 </html>
