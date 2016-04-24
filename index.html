@@ -5,8 +5,11 @@
     <title>eshop desktop application</title>
     <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="./style/main.css">
   </head>
-  <body>
+  <body ng-app="eshop" ng-controller="main">
+    <menu></menu>
+    
     <div class="container">
         <div class="row">
             <input type="button" value="print file" class="btn btn-primary" onclick="printFile()"></input>
@@ -18,6 +21,10 @@
   
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="src/app.js"></script>
+    <script type="text/javascript" src="src/controllers/main.js"></script>
+    <script type="text/javascript" src="src/directives/menu.js"></script>
+    <script type="text/javascript" src="src/services/menu.js"></script>
 
     <script type="text/javascript">
         function printFile() {
