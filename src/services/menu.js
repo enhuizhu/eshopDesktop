@@ -4,7 +4,7 @@ angular.module("eshop").service("menu", function() {
 	this.items = [
 		{
 			title: "Log Out",
-			url: "/#logout",
+			url: "#logout",
 			children:[
 				{
 					title: "admin"
@@ -18,27 +18,24 @@ angular.module("eshop").service("menu", function() {
 		},
 		{
 			title: "Latest Orders",
-			url: "/",
+			url: "#/",
 			children: [],
 			icon: "glyphicon-envelope"
 		},
 		{
 			title: "Report",
-			url: "",
 			children: [
 				{
 					title: "Income Report",
-					children:[
-						{
-							title: "icome 1",
-							url: "/#icome_1"
-						}
-					]
+					url: "#income_report"
+				},
+				{
+					title: "Profit Report",
+					url: "#Profit_report",
 				},
 				{
 					title: "Order Report",
-					url: "/#order_report",
-					children:[]
+					url: "#order_report",
 				}
 			],
 			icon: "glyphicon-picture"
