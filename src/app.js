@@ -26,4 +26,16 @@ angular.module("eshop", ["ngRoute"])
 			.otherwise({
 				redirectTo: "/"
 			})
+
+		 // $http.defaults.headers.common.token = 'ZnZ96P2lTv';
+	
+	}).run(function(SOCKET_IO_URL, script, orders, $http) {
+		$http.defaults.headers.common.token = 'ZnZ96P2lTv';
+
+		/**
+		* load the socket io client code
+		**/
+		script.loadScript(SOCKET_IO_URL + "/socket.io/socket.io.js", function() {
+			orders.startListening(io);
+		});
 	});

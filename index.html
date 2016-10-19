@@ -15,7 +15,8 @@
             <div ng-view></div>
         </div>
     </div>
-    
+
+    <!-- include socket io //-->
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
   
@@ -23,37 +24,16 @@
     <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="src/app.js"></script>
+    <script type="text/javascript" src="src/config.js"></script>
+    <script type="text/javascript" src="src/constants.js"></script>
     <script type="text/javascript" src="src/controllers/main.js"></script>
     <script type="text/javascript" src="src/controllers/LatestOrderCtrl.js"></script>
     <script type="text/javascript" src="src/directives/menu.js"></script>
+    
+    <!-- include all the services //-->
     <script type="text/javascript" src="src/services/menu.js"></script>
-
-    <script type="text/javascript">
-        function printFile() {
-            const printer = require("node-printer");
-            let avilablePrinter = printer.list().pop();
-            let fs = require("fs");
-            let shopPrinter = null;
-
-            if (!avilablePrinter) {
-                alert("printer is not avilable!");
-            };
-
-            if (avilablePrinter) {
-                console.info("avilablePrinter", avilablePrinter);
-                shopPrinter = new printer(avilablePrinter);
-                let fileBuffer = fs.readFileSync("message.txt");
-                let jobFromBuffer = shopPrinter.printBuffer(fileBuffer);
-
-                jobFromBuffer.once("sent", function() {
-                    console.info("sent the job");
-                    jobFromBuffer.on("compeleted", function() {
-                        console.log("job" + jobFromBuffer.identifier + " has been printed!");
-                        jobFromBuffer.removeAllListeners();
-                    });
-                });
-            };
-        }
-    </script>
+    <script type="text/javascript" src="src/services/orders.js"></script>
+    <script type="text/javascript" src="src/services/script.js"></script>
+    <script type="text/javascript" src="src/services/api.js"></script>
   </body>
 </html>
