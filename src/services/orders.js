@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('eshop').service('orders', function(SOCKET_IO_URL, PLACE_ORDER, api) {
+angular.module('eshop').service('orders', function(SOCKET_IO_URL, PLACE_ORDER, api, sound) {
 	return {
 		items: [],
 
@@ -19,6 +19,7 @@ angular.module('eshop').service('orders', function(SOCKET_IO_URL, PLACE_ORDER, a
 				console.info('response', response.data);
 				response.read = false;
 				that.addOrder(response.data);
+				sound.play('new_order');
 			}).catch(function(e) {	
 				console.error('error', e);
 			});
