@@ -23,10 +23,10 @@
 			<td>{{order.contact.tel}}</td>
 			<td>{{order.contact.address1}}, {{order.contact.address2}}, {{order.contact.city}}, {{order.contact.postcode}} </td>
 			<td>
-				<!-- {{(new Date(order.orderTime*1000)).toLocaleString()}} -->
+				{{timeService.format(order.orderTime*1000)}}
 			</td>
 			<td>
-				<!-- {{(new Date(order.delieverTime*1000)).toLocaleString()}} -->
+				{{timeService.format(order.delieverTime*1000)}}
 			</td>
 		</tr>
 	</table>
