@@ -1,0 +1,50 @@
+<div class="menu">
+	<!-- Nested node template -->
+	<script type="text/ng-template" id="childMenu.html">
+		<ul>
+			<li ng-repeat="item in item.children">
+				<a ng-href="{{item.url}}" ng-if="item.url">
+					<div ng-include="'singleItem.html'"></div>
+				</a>
+
+				<div ng-include="'singleItem.html'" ng-if="!item.url"></div>
+
+				<div ng-include="'childMenu.html'" ng-if="item.children && item.children.length > 0" ng-show="item.active">
+			</li>
+		</ul>
+	</script>
+	
+	<script type="text/ng-template" id="singleItem.html">
+		<div ng-click="toogle(item)" class="item">
+			<span class="{{item.icon ? item.icon + ' glyphicon': ''}}"></span>
+				{{::item.title}}
+			<span ng-if="item.children && item.children.length >0" class="glyphicon glyphicon-play" ng-class="{active:item.active}"></span>
+		</div>
+
+		<div class="line-break"></div>
+	</script>
+
+
+	<ul class="first-level">
+		<li ng-repeat="item in menu.items">
+			<a ng-href="{{item.url}}" ng-if="item.url">
+				<div>
+					<span class="glyphicon {{item.icon ? item.icon : glyphicon-th-large}}"></span>
+				</div>
+			</a>
+
+			<div ng-if="!item.url">
+				<span class="glyphicon {{item.icon ? item.icon : glyphicon-th-large}}"></span>
+			</div>
+
+			<div ng-include="'childMenu.html'" ng-if="item.children && item.children.length > 0" class="second-level">
+			</div>
+
+			<div ng-if="!item.children || item.children.length === 0" class="item-title">
+				<span class="arrow"></span>
+				<span ng-bind="::item.title" class="content"></span>
+			</div>
+		</li>
+	</ul>
+
+</div>

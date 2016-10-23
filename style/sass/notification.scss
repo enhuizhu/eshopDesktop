@@ -1,0 +1,25 @@
+/**
+* sass for notification
+**/
+.notifications {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	z-index: 10000;
+
+
+	.notification {
+		$maxWidth: 500px;
+		margin: 5px auto;
+		max-width: $maxWidth;
+		padding: 13px;
+		border-radius: 4px;
+		box-shadow: 2px 2px 2px gray;
+
+		.glyphicon-remove {
+			cursor: pointer;
+			float: right;
+		}
+	}
+}
