@@ -15,8 +15,5 @@ angular.module('eshop').service('sound', function() {
 			audio.src = this.sounds[soundKey];
 			audio.play();
 		}
-
 	}
-
-
 });
