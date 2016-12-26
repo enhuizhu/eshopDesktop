@@ -1,2 +1,6 @@
+*.log
+src/config.js
 node_modules
 bower_components
+build
+eshop-desktip-linux-ia32
