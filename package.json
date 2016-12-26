@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
-    "build": "electron-packager . --all"
+	"clean:win": "rm -rf ./dist/win",
+	"pack": "npm run clean:win && electron-packager . \"Restrauants\" --out=dist/win --platform=win32 --arch=ia32 --version=0.36.2 --icon=assets/images/restraurant.ico --ignore=dist --ignore=assets --ignore=builder.json --ignore=bower.json --ignore=README.md --ignore=.gitignore --ignore=preview.png"
   },
   "repository": {
     "type": "git",
@@ -14,6 +15,7 @@
   "author": "enhuizhu",
   "homepage": "http://www.olmarket.co.uk",
   "devDependencies": {
+    "electron-builder": "^7.23.2",
     "electron-packager": "^8.1.0",
     "electron-prebuilt": "^0.37.0",
     "grunt": "^1.0.1",
