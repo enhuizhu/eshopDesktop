@@ -18,6 +18,12 @@ angular.module('eshop').service('orders', function(SOCKET_IO_URL, PLACE_ORDER, a
 			api.getOrderById(data).then(function(response) {
 				console.info('response', response.data);
 				response.read = false;
+				
+				//should check if response data is object
+				if (!angular.isObject(response.data)) {
+					return ;
+				}
+
 				that.addOrder(response.data);
 				sound.play('new_order');
 			}).catch(function(e) {	
