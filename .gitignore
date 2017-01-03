@@ -5,3 +5,4 @@ bower_components
 eshop-desktip-linux-ia32
 .DS_Store
 dist
+style/.sass-cache/

@@ -161,7 +161,8 @@
       float: right; }
 
 body > .container {
-  position: relative; }
+  position: relative;
+  left: 35px; }
 
 li {
   list-style: none; }
