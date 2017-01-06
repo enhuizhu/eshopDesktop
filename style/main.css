@@ -65,6 +65,14 @@
       margin-top: 10px;
       margin-left: -10px; }
 
+.login-form {
+  max-width: 320px;
+  padding: 24px;
+  border: solid 1px #ece6e6;
+  border-radius: 8px;
+  box-shadow: 2px 2px 9px #a9a6a6;
+  margin: 56px auto; }
+
 /*scss for loader*/
 .loader {
   width: 100%;
@@ -159,6 +167,9 @@
     .notifications .notification .glyphicon-remove {
       cursor: pointer;
       float: right; }
+
+.latest-order select {
+  color: black; }
 
 body > .container {
   position: relative;

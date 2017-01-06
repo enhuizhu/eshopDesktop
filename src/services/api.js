@@ -1,14 +1,20 @@
 'use strict';
 
-angular.module('eshop').service('api', function(BASE_API_PATH, $http) {
+angular.module('eshop').service('api', function(BASE_API_PATH, $http, tokenService) {
 
 	return {
-		getApiPath: function(path) {
-			return BASE_API_PATH + path;
+		getApiPath: function(path, withToken) {
+			var newPath = BASE_API_PATH + path;
+
+			if (withToken) {
+				newPath += '?token=' + tokenService.getToken();
+			}
+			
+			return newPath;
 		},
 
 		getOrderById: function(id) {
-			return $http.get(this.getApiPath('orders/getOrderById/' + id) )
+			return $http.get(this.getApiPath('orders/getOrderById/' + id, true));
 		},
 
 		getConfigs: function() {
@@ -22,6 +28,10 @@ angular.module('eshop').service('api', function(BASE_API_PATH, $http) {
 			}
 
 			return $http.post(this.getApiPath('updateOrderStatus'), data);
+		},
+
+		login: function(userInfo) {
+			return $http.post(this.getApiPath('shopuser/login'), {username: userInfo.name, password: userInfo.password});
 		}
 	}
 });

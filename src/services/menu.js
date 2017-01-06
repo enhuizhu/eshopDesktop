@@ -5,15 +5,7 @@ angular.module("eshop").service("menu", function() {
 		{
 			title: "Log Out",
 			url: "#logout",
-			children:[
-				{
-					title: "admin"
-				},
-				{
-					title: "break"
-				}
-
-			],
+			children:[],
 			icon: "glyphicon-log-out",
 		},
 		{

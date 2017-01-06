@@ -17,19 +17,12 @@
     <link rel="stylesheet" type="text/css" href="./style/main.css">
   </head>
   <body ng-app="eshop" ng-controller="main">
-    <notifications></notifications>
-    
-    <menu></menu>    
-    
-    <div class="container">
-        <div class="row">
-            <div ng-view></div>
-        </div>
+    <div ng-switch="auth.isLogin()">
+      <login ng-switch-when="false"></login>
+      <main-page ng-switch-when="true"></main-page>
+      <loader></loader>
     </div>
 
-    <loader></loader>
-
-    <!-- include socket io //-->
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="src/app.js"></script>
@@ -37,15 +30,20 @@
     <script type="text/javascript" src="src/constants.js"></script>
     <script type="text/javascript" src="src/controllers/main.js"></script>
     <script type="text/javascript" src="src/controllers/LatestOrderCtrl.js"></script>
+    <script type="text/javascript" src="src/controllers/logoutCtrl.js"></script>
     
     <!-- include all the dierctives -->
     <script type="text/javascript" src="src/directives/menu.js"></script>
     <script type="text/javascript" src="src/directives/loader.js"></script>
     <script type="text/javascript" src="src/directives/notifications.js"></script>
     <script type="text/javascript" src="src/directives/notification.js"></script>
+    <script type="text/javascript" src="src/directives/mainPage.js"></script>
+    <script type="text/javascript" src="src/directives/login.js"></script>
     
     <!-- include all the services //-->
     <script type="text/javascript" src="src/services/menu.js"></script>
+    <script type="text/javascript" src="src/services/auth.js"></script>
+    <script type="text/javascript" src="src/services/tokenService.js"></script>
     <script type="text/javascript" src="src/services/orders.js"></script>
     <script type="text/javascript" src="src/services/script.js"></script>
     <script type="text/javascript" src="src/services/api.js"></script>
