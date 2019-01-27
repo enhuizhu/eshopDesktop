@@ -1,7 +1,16 @@
 "use strict";
 
 angular.module("eshop").controller("LatestOrderCtrl", function() {
-    var controller = function($scope, orders, timeService, configs, api, loaderService, notificationCenter) {
+    var controller = function(
+        $scope, 
+        orders, 
+        timeService, 
+        configs, 
+        api, 
+        loaderService, 
+        notificationCenter,
+        printService
+    ) {
         $scope.orders = orders;
         $scope.timeService = timeService;
         $scope.configs = configs;
@@ -10,6 +19,7 @@ angular.module("eshop").controller("LatestOrderCtrl", function() {
         this.api = api;
         this.loaderService = loaderService
         this.notificationCenter = notificationCenter;
+        this.printService = printService;
         this.bootstrapScopeEvents();
     }
 
@@ -37,9 +47,22 @@ angular.module("eshop").controller("LatestOrderCtrl", function() {
                 });
 
             }
+
+            this.$.print = function() {
+                that.printService.print('hello');
+            }
         }
     }
 
-    controller.$inject = ['$scope', 'orders', 'timeService', 'configs', 'api', 'loaderService', 'notificationCenter'];
+    controller.$inject = [
+        '$scope', 
+        'orders', 
+        'timeService', 
+        'configs', 
+        'api', 
+        'loaderService', 
+        'notificationCenter',
+        'printService'
+    ];
     return controller;
 }());
